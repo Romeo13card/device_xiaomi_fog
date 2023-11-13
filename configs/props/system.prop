@@ -12,7 +12,6 @@ camera.disable_zsl_mode=true
 
 # Charger
 ro.charger.disable_init_blank=true
-ro.charger.enable_suspend=true
 
 # CNE
 persist.cne.feature=1
