@@ -15,3 +15,8 @@ cd kernel/xiaomi/fog
 rm -rf Android.bp
 rm -rf techpack/audio/Android.bp
 cd ../../..
+
+# TMP: https://review.lineageos.org/c/LineageOS/android_packages_apps_Messaging/+/407299
+cd packages/apps/Messaging
+git fetch https://github.com/LineageOS/android_packages_apps_Messaging refs/changes/99/407299/2 && git cherry-pick FETCH_HEAD
+cd ../../..
