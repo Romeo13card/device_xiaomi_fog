@@ -11,6 +11,19 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit some common stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 TARGET_BOOT_ANIMATION_RES := 720
+LUNARIS_BUILD_TYPE := Unoffical
+SURFACE_FLINGER_BOOST := true
+TARGET_ENABLE_BLUR := false
+TARGET_FACE_UNLOCK_SUPPORTED := true
+TARGET_SUPPORTS_QUICK_TAP := false
+TARGET_SUPPORTS_GOOGLE_RECORDER := false
+TARGET_INCLUDE_STOCK_ARCORE := true
+TARGET_SUPPORTS_CALL_RECORDING := true
+TARGET_INCLUDE_ACCORD ?= true
+TARGET_SUPPORTS_OMX_SERVICE := false
+
+#GMS
+WITH_GMS := false
 
 # Inherit from fog device
 $(call inherit-product, device/xiaomi/fog/device.mk)
