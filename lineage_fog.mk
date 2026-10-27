@@ -15,6 +15,15 @@ TARGET_BOOT_ANIMATION_RES := 720
 # Inherit from fog device
 $(call inherit-product, device/xiaomi/fog/device.mk)
 
+# AxionAOSP specific flags
+TARGET_DISABLE_EPPE := true
+TARGET_ENABLE_BLUR := false
+AXION_CAMERA_REAR_INFO := 50,5
+AXION_CAMERA_FRONT_INFO := 5
+AXION_MAINTAINER := romeo_13card
+AXION_PROCESSOR := Snapdragon_680
+
+
 PRODUCT_NAME := lineage_fog
 PRODUCT_DEVICE := fog
 PRODUCT_MANUFACTURER := Xiaomi
