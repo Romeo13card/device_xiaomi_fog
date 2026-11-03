@@ -5,5 +5,5 @@
 -->
 <resources>
     <!-- Show battery information -->
-    <bool name="config_show_battery_info">false</bool>
+    <bool name="config_show_battery_info">true</bool>
 </resources>

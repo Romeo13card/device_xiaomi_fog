@@ -26,3 +26,18 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="fog_global-user 13 TKQ1.221114.001 V14.0.8.0.TGEMIXM release-keys" \
     BuildFingerprint=Redmi/fog_global/fog:13/TKQ1.221114.001/V14.0.8.0.TGEMIXM:user/release-keys
+
+# Build flags
+TARGET_DISABLE_EPPE := true
+
+# LunarisAOSP Flags
+LUNARIS_BUILD_TYPE := Community
+WITH_GMS := false
+WITH_PIXEL_LAUNCHER := false
+WITH_BCR := false
+TARGET_USE_WALLPAPERS := true
+USE_REALITY_ENGINE := true
+TARGET_ENABLE_BLUR := true
+USE_ADVANCED_DISPLAY_COLOR := true
+TARGET_USE_GPHOTOS := true
+TARGET_LOW_END_BLUR := true
