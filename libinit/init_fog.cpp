@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <cstdint>
 #include <cstdlib>
 #include <fstream>
 #include <string.h>
@@ -135,10 +136,21 @@ void vendor_load_properties() {
     std::string heapstartsize, heapgrowthlimit, heapsize, heapminfree,
 			heapmaxfree, heaptargetutilization;
 
-    struct sysinfo sys;
-    sysinfo(&sys);
+    struct sysinfo sys = {};
+    // Keep the 4 GB defaults if the kernel cannot report memory capacity.
+    uint64_t ram_bytes = 4096ull * 1024 * 1024;
+    if (sysinfo(&sys) == 0 && sys.totalram != 0 && sys.mem_unit != 0) {
+        ram_bytes = static_cast<uint64_t>(sys.totalram) * sys.mem_unit;
+    }
 
-    if (sys.totalram > 5072ull * 1024 * 1024) {
+    if (ram_bytes <= 3072ull * 1024 * 1024) {
+        // Leave interactive and boot compilation unchanged. Limit background
+        // dexopt to two workers on the efficiency cores for the 3 GB variant.
+        property_override("dalvik.vm.background-dex2oat-threads", "2");
+        property_override("dalvik.vm.background-dex2oat-cpu-set", "0,1,2,3");
+    }
+
+    if (ram_bytes > 5072ull * 1024 * 1024) {
         // from - phone-xhdpi-6144-dalvik-heap.mk
         heapstartsize = "16m";
         heapgrowthlimit = "256m";
@@ -146,7 +158,7 @@ void vendor_load_properties() {
         heaptargetutilization = "0.5";
         heapminfree = "8m";
         heapmaxfree = "32m";
-    } else if (sys.totalram > 3072ull * 1024 * 1024) {
+    } else if (ram_bytes > 3072ull * 1024 * 1024) {
         // from - phone-xhdpi-4096-dalvik-heap.mk
         heapstartsize = "8m";
         heapgrowthlimit = "192m";
