@@ -59,9 +59,9 @@ on property:sys.boot_completed=1
     write /dev/cpuctl/system/cpu.uclamp.min 0.00
 
     # Set uclamp.max for some groups, which could indicate cpu importance used in scheduling
-    write /dev/cpuctl/background/cpu.uclamp.max 51.20
+    write /dev/cpuctl/background/cpu.uclamp.max 10.00
     write /dev/cpuctl/system-background/cpu.uclamp.max 51.20
-    write /dev/cpuctl/dex2oat/cpu.uclamp.max 61.50
+    write /dev/cpuctl/dex2oat/cpu.uclamp.max 40.00
 
     # Setup cpu.shares to throttle background groups (bg ~ 5% sysbg ~ 5% dex2oat ~2.5%)
     write /dev/cpuctl/background/cpu.shares 1024
