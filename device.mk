@@ -170,6 +170,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     gralloc.qcom
 
+# Dolby Atmos (Ghosuto/hardware_dolby, branch 16, at hardware/dolby)
+# dolby.mk includes LunarisDolby, DMS HAL, Codec2 decoders and SEPolicy.
+$(call inherit-product, hardware/dolby/dolby.mk)
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.4.vendor \
