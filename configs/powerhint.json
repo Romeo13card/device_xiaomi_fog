@@ -132,8 +132,7 @@
       "Name": "BGUClampMaxBoost",
       "Path": "/dev/cpuctl/background/cpu.uclamp.max",
       "Values": [
-        "10.00",
-        "51.20"
+        "10.00"
       ],
       "DefaultIndex": 0,
       "ResetOnInit": true
@@ -142,8 +141,7 @@
       "Name": "Dex2oatUClampMaxBoost",
       "Path": "/dev/cpuctl/dex2oat/cpu.uclamp.max",
       "Values": [
-        "40.00",
-        "60.50"
+        "40.00"
       ],
       "DefaultIndex": 0,
       "ResetOnInit": true
@@ -274,18 +272,6 @@
       "Node": "CPULittleClusterMinFreq",
       "Duration": 3000,
       "Value": "1900800"
-    },
-    {
-      "PowerHint": "LAUNCH",
-      "Node": "BGUClampMaxBoost",
-      "Duration": 3000,
-      "Value": "51.20"
-    },
-    {
-      "PowerHint": "LAUNCH",
-      "Node": "Dex2oatUClampMaxBoost",
-      "Duration": 3000,
-      "Value": "60.50"
     },
     {
       "PowerHint": "LAUNCH",
