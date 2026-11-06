@@ -115,6 +115,9 @@ Only the three quirks included above are recognized at this point:
 -->
 
 <MediaCodecs>
+    <!-- add dolby codecs -->
+    <Include href="media_codecs_dolby_audio.xml" />
+    <!-- dolby codecs -->
     <Settings>
         <Domain name="telephony" enabled="true" />
         <Setting name="max-video-encoder-input-buffers" value="11" />
