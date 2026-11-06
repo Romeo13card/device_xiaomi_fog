@@ -593,5 +593,9 @@ PRODUCT_PACKAGES += \
 # Inherit from vendor blobs
 $(call inherit-product, vendor/xiaomi/fog/fog-vendor.mk)
 
-# MiuiCamera
+# MiuiCamera is optional for builds targeting devices with 3 GB RAM.
+# Enable with FOG_INCLUDE_MIUI_CAMERA=true in the build environment.
+FOG_INCLUDE_MIUI_CAMERA ?= false
+ifeq ($(FOG_INCLUDE_MIUI_CAMERA),true)
 $(call inherit-product, vendor/xiaomi/camera/miuicamera.mk)
+endif
