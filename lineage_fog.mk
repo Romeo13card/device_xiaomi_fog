@@ -11,7 +11,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit some common stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 TARGET_BOOT_ANIMATION_RES := 720
-TARGET_ENABLE_BLUR := true
+TARGET_ENABLE_BLUR := false
 TARGET_SUPPORTS_QUICK_TAP := false
 BYPASS_CHARGE_SUPPORTED := false
 WITH_GMS := false
