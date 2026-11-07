@@ -14,7 +14,7 @@ $(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 # Project Infinity X Flags
 INFINITY_BUILD_TYPE := UNOFFICIAL
 INFINITY_MAINTAINER := "romeo_13card"
-TARGET_SUPPORTS_BLUR := true
+TARGET_SUPPORTS_BLUR := false
 TARGET_SHIPS_FULL_GAPPS := false
 TARGET_SHIPS_GOOGLE_DIALER := false
 TARGET_SUPPORTS_QUICK_TAP := false
