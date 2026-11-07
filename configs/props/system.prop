@@ -1,5 +1,5 @@
 # Bluetooth
-persist.bluetooth.disableabsvol=true
+*persist.bluetooth.disableabsvol=true
 persist.sys.btstack.absvolfeature=false
 persist.vendor.bt.a2dp.absvolfeature=false
 vendor.bluetooth.soc=cherokee
@@ -101,3 +101,9 @@ ro.hardware.wlan.dbs=0
 
 # Zygote
 persist.device_config.runtime_native.usap_pool_enabled=true
+
+# About Phone
+ro.infinity.soc=Snapdragon 680
+ro.infinity.battery=5000 mAh
+ro.infinity.display=720 x 1650 , 60Hz
+ro.infinity.camera=50MP + 5MP
