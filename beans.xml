@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <include name="../platforms/bengal.xml" />
+  <project path="device/xiaomi/fog" name="Romeo13card/device_xiaomi_fog" remote="github" revision="aospa-17" />
+  <project path="device/xiaomi/fog-kernel" name="Romeo13card/device_xiaomi_fog-kernel" remote="github" revision="neutron" />
+  <project path="vendor/xiaomi/fog" name="Romeo13card/vendor_xiaomi_fog" remote="github" revision="aospa-17" clone-depth="1" />
+  <project path="hardware/xiaomi" name="AOSPA/android_hardware_xiaomi" remote="aospa" revision="calcite" />
+  <project path="hardware/dolby" name="Ghosuto/hardware_dolby" remote="github" revision="16" />
+</manifest>

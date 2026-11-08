@@ -5,4 +5,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_fog.mk
+    $(LOCAL_DIR)/aospa_fog.mk
+
+COMMON_LUNCH_CHOICES := \
+    aospa_fog-userdebug

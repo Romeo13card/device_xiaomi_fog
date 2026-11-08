@@ -75,7 +75,6 @@ BOARD_HAVE_QCOM_FM := true
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += $(DEVICE_PATH)/configs/vintf/framework_compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
-DEVICE_MATRIX_FILE += hardware/qcom-caf/common/compatibility_matrix.xml
 
 ODM_MANIFEST_SKUS += c3qn
 ODM_MANIFEST_C3QN_FILES := $(DEVICE_PATH)/configs/vintf/manifest_c3qn.xml
@@ -112,6 +111,8 @@ BOARD_KERNEL_CMDLINE += \
 
 TARGET_NO_KERNEL_OVERRIDE := true
 TARGET_KERNEL_SOURCE := $(KERNEL_PATH)/kernel-headers
+TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/Image
+TARGET_KERNEL_VERSION := 4.19
 BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 BOARD_PREBUILT_DTBIMAGE_DIR := $(KERNEL_PATH)/dtb
 BOARD_MKBOOTIMG_ARGS += --dtb $(BOARD_PREBUILT_DTBIMAGE_DIR)/khaje.dtb
@@ -137,12 +138,18 @@ BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm system system_ext product vendor
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # BOARD_SUPER_PARTITION_SIZE - 4MB
 
-ifeq ($(WITH_GMS),true)
+ifneq ($(TARGET_DISABLES_GMS),true)
 BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 104857600
 BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 104857600
 BOARD_SYSTEM_EXTIMAGE_PARTITION_RESERVED_SIZE := 104857600
 else
--include vendor/lineage/config/BoardConfigReservedSize.mk
+# Leave addon space for a separately installed GApps package on vanilla builds.
+BOARD_PRODUCTIMAGE_PARTITION_RESERVED_SIZE := 1188036608
+BOARD_SYSTEMIMAGE_PARTITION_RESERVED_SIZE := 94371840
+BOARD_SYSTEM_EXTIMAGE_PARTITION_RESERVED_SIZE := 94371840
+BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT := -1
+BOARD_SYSTEMIMAGE_EXTFS_INODE_COUNT := -1
+BOARD_SYSTEM_EXTIMAGE_EXTFS_INODE_COUNT := -1
 endif
 BOARD_VENDORIMAGE_PARTITION_RESERVED_SIZE := 104857600
 
@@ -194,9 +201,8 @@ ENABLE_VENDOR_RIL_SERVICE := true
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
 # Sepolicy
-include device/lineage/sepolicy/libion/sepolicy.mk
-include device/lineage/sepolicy/libperfmgr/sepolicy.mk
-include device/qcom/sepolicy_vndr/SEPolicy.mk
+include vendor/aospa/sepolicy/libion/sepolicy.mk
+# Qualcomm policy is inherited by BoardConfigAOSPA.mk.
 
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
